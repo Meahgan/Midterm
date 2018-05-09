@@ -1,0 +1,21 @@
+#start {
+  height: 200px;
+  width: 400px;
+  background-color: rgb(230, 255, 255);
+
+}
+
+
+#board {
+  height: 100px;
+  width: 70px;
+  background-color: rgb(0, 64, 128);
+  border-radius: 45px;
+  
+
+}
+
+
+#reset {
+
+}
