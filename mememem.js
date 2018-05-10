@@ -121,3 +121,5 @@ let gameBoard = new Board(16, imgFronts);
 gameBoard.makeCards();
 // Shuffle cards and add them to the DOM
 gameBoard.setBoard();
+
+// $(".front").hide();
