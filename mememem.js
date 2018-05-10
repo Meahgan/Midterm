@@ -136,4 +136,4 @@ reset.addEventListener("click", () => {
 	$('#reset').toggle();
 	$('#board').hide();
 });
-
+$('#victory').hide();
