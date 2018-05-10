@@ -45,6 +45,7 @@ class Card {
 
 	}
 	cardClick() {
+		let cardId = document.getElementById('')
 
 	}
 }
@@ -136,4 +137,3 @@ reset.addEventListener("click", () => {
 	$('#reset').toggle();
 	$('#board').hide();
 });
-
