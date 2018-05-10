@@ -79,7 +79,7 @@ class Board {
 
 				// Adds compiled card html that is ready to be appended to the DOM to
 				// to an array that will be shuffled in setBoard()
-				this.cards.push(card2.draw());
+				this.cards.push(card2);
 				cardNumber++;
 
 			}
