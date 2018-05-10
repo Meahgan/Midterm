@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 
+img {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  margin-top: 200px;
+}
 
 body {
   background-color: rgba(255, 255, 204, .8);
@@ -49,6 +55,7 @@ body {
   margin-top: 40px;
   border-radius: 25px;
   background-image: url("imgs/pattern.jpg");
+  background-position: center;
   border: 1px solid white;
   z-index: 1;
 
