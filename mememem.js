@@ -45,7 +45,13 @@ class Card {
 
 	}
 	cardClick() {
-		let cardId = document.getElementById('')
+		let cardId = document.getElementById(`${this.cardNumber}`);
+		cardId.addEventListener(`click`, () => {
+			console.log("ya");
+			$(`.front`).fadeIn(500);
+
+		});
+
 
 	}
 }
@@ -71,10 +77,12 @@ class Board {
 				this.cards.push(card1.draw());
 				cardNumber++;
 				let card2 = new Card(this.imgFronts[i], cardNumber, matchNumber);
+
 				// Adds compiled card html that is ready to be appended to the DOM to
 				// to an array that will be shuffled in setBoard()
 				this.cards.push(card2.draw());
 				cardNumber++;
+
 			}
 		}
 		// This else statement is to catch when an error will occur from intial board parameters
@@ -94,6 +102,8 @@ class Board {
 		for(let i=0; i<shuffled.length; i++) {
 			let domTarget = document.getElementById('board');
 			domTarget.appendChild(shuffled[i]);
+			// shuffled[i].cardClick();
+
 		}
 	}
 }
@@ -112,6 +122,8 @@ function shuffle(a) {
 function checkMatch(cardOneChosen, card) {
 
 }
+
+
 ///////////////////////////////////////////
 //////////////////////////////////////////
 /////////////////////////////////////////
