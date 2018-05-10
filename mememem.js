@@ -117,8 +117,8 @@ function checkMatch(cardOneChosen, card) {
 $('#reset').hide();
 $('#board').hide();
 $('#start').on("click", ()=> {
-	$('#start').hide().slideUp();
-	$('#board').show().fadeIn();
+	$('#start').slideUp(1000);
+	$('#board').fadeIn(2000);
 	let gameBoard = new Board(16, imgFronts);
 	// Make the cards for the game board
 	gameBoard.makeCards();
