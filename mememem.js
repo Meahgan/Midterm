@@ -45,6 +45,7 @@ class Card {
 
 	}
 	cardClick() {
+		let cardId = document.getElementById('')
 
 	}
 }
@@ -63,16 +64,17 @@ class Board {
 		// is not going to exceed the number of unique card matches available in the img data
 		if(this.numberOfCards<=(this.imgFronts.length*2)) {
 			let cardNumber = 0;
-			for(let j=1; j<3; j++){
-				for(let i=0; i<this.imgFronts.length; i++){
-					// Sets a pair cards to the same img data...aka a match
-					let matchNumber = i;
-					let card = new Card(this.imgFronts[i], cardNumber, matchNumber);
-					// Adds compiled card html that is ready to be appended to the DOM to
-					// to an array that will be shuffled in setBoard()
-					this.cards.push(card.draw());
-					cardNumber++;
-				}
+			for(let i=0; i<this.imgFronts.length; i++){
+				// Sets a pair cards to the same img data...aka a match
+				let matchNumber = i;
+				let card1 = new Card(this.imgFronts[i], cardNumber, matchNumber);
+				this.cards.push(card1.draw());
+				cardNumber++;
+				let card2 = new Card(this.imgFronts[i], cardNumber, matchNumber);
+				// Adds compiled card html that is ready to be appended to the DOM to
+				// to an array that will be shuffled in setBoard()
+				this.cards.push(card2.draw());
+				cardNumber++;
 			}
 		}
 		// This else statement is to catch when an error will occur from intial board parameters
