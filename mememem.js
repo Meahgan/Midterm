@@ -1,30 +1,49 @@
+// Intitial Data for Project -- Card Imagery
 let imgFronts = new Array(8).fill(0);
 const imgBack = 'var';
 console.log(imgFronts);
+
+
+// Holds template to build a Card and Card Event Functions
 class Card {
+	// Card needs to be passed a number for organizational purposes
+	// and the unique imagery for the front that it and it's match share
 	constructor(cardImg, cardNumber) {
 		this.cardImg = cardImg;
 		this.cardNumber = cardNumber;
 
 	}
-	draw() { 
+	// Method assembles html elements so card will appear in DOM
+	draw() {
+		// Create Elements needed for a card
 		let card = document.createElement('div');
 		//let cardBack = document.createElement('img');
 		let cardBack = document.createElement('p');
 		let cardFront = document.createElement('div');
 		let imgFront = document.createElement('p');
 		//let imgFront = document.createElement('img');
-		//cardBack.setAttribute('src', imgBack);
+
+		// Set Classes and Img srcs using .setAttribute(attribute, selector)
 		cardBack.setAttribute('class', 'back');
 		cardFront.setAttribute('class', 'front');
-		//imgFront.setAttribute('src', this.cardImg);
-		imgFront.textContent = this.cardNumber;
 		card.setAttribute('class', 'card');
 		card.setAttribute('id', this.cardNumber);
+
+		// Set Content for element by inserting img src using setAttribute
+		//cardBack.setAttribute('src', imgBack);
+		//imgFront.setAttribute('src', this.cardImg);
+		imgFront.textContent = this.cardNumber;
+
+		// Build card by appending elements in correct order
+		// Uses append  working top to bottom and from the interior to exterior elements
 		card.appendChild(cardBack);
 		cardFront.appendChild(imgFront);
 		card.appendChild(cardFront);
 		console.log(card);
+
+		// It has not yet been inserted into the dom at this point
+		// because the cards need to be shuffled
+		// return formatted card to the inside of board.makeCards() where it was called
 		return card;
 
 	}
@@ -32,36 +51,52 @@ class Card {
 
 	}
 }
+
+//Board to check game
 class Board {
+	// Board needs to have how many cards you want and the img data passed to it
 	constructor(numberOfCards, imgFronts) {
 		this.numberOfCards = numberOfCards;
 		this.imgFronts = imgFronts;
 		this.cards = [];
 	}
+	// This metho constructs the cards for the game
 	makeCards() {
+		// If statement checks to see that the number of cards you want
+		// is not going to exceed the number of unique card matches available in the img data
 		if(this.numberOfCards<=(this.imgFronts.length*2)) {
 			for(let i=0; i<this.numberOfCards; i=i+2){
+				// Sets a pair cards to the same img data...aka a match
 				let card1 = new Card(this.imgFronts[i], i);
 				let card2 = new Card(this.imgFronts[i], i+1);
+				// Adds compiled card html that is ready to be appended to the DOM to
+				// to an array that will be shuffled in setBoard()
 				this.cards.push(card1.draw());
 				this.cards.push(card2.draw());
 			}
 		}
-		else{
+		// This else statement is to catch when an error will occur from intial board parameters
+		else {
 			console.log("to run you need to reset number of cards to be less than double of imgs array");
 		}
 	}
+	// Takes card elements that were made shuffles them and attaches them to the DOM
 	setBoard(){
 		console.log(this.cards);
+		// shuffle cards and store them in shuffled array
 		let shuffled = shuffle(this.cards);
 		console.log(shuffled);
 
+		// Iterate through shuffled array and add each card to the DOM targeting
+		// #board id
 		for(let i=0; i<shuffled.length; i++) {
 			let domTarget = document.getElementById('board');
 			domTarget.appendChild(shuffled[i]);
 		}
 	}
 }
+
+// shuffle() is used to shuffle the card order, borrowed from a stackoverflow thread
 function shuffle(a) {
     let j, x, i;
     for (i = a.length - 1; i > 0; i--) {
@@ -72,6 +107,10 @@ function shuffle(a) {
     }
     return a;
 }
-let gameBoard = new Board(8, imgFronts);
+
+// Create a new game board
+let gameBoard = new Board(16, imgFronts);
+// Make the cards for the game board
 gameBoard.makeCards();
+// Shuffle cards and add them to the DOM
 gameBoard.setBoard();
