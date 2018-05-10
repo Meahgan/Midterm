@@ -36,7 +36,6 @@ class Card {
 		// Uses append  working top to bottom and from the interior to exterior elements
 		cardFront.appendChild(imgFront);
 		card.appendChild(cardFront);
-		console.log(card);
 
 		// It has not yet been inserted into the dom at this point
 		// because the cards need to be shuffled
@@ -48,7 +47,7 @@ class Card {
 		let cardId = document.getElementById(`${this.cardNumber}`);
 		cardId.addEventListener(`click`, () => {
 			console.log("ya");
-			$(`.front`).fadeIn(500);
+			$(`#${this.cardNumber} .front`).fadeIn(500);
 
 		});
 
@@ -74,7 +73,7 @@ class Board {
 				// Sets a pair cards to the same img data...aka a match
 				let matchNumber = i;
 				let card1 = new Card(this.imgFronts[i], cardNumber, matchNumber);
-				this.cards.push(card1.draw());
+				this.cards.push(card1);
 				cardNumber++;
 				let card2 = new Card(this.imgFronts[i], cardNumber, matchNumber);
 
@@ -84,6 +83,7 @@ class Board {
 				cardNumber++;
 
 			}
+
 		}
 		// This else statement is to catch when an error will occur from intial board parameters
 		else {
@@ -101,8 +101,8 @@ class Board {
 		// #board id
 		for(let i=0; i<shuffled.length; i++) {
 			let domTarget = document.getElementById('board');
-			domTarget.appendChild(shuffled[i]);
-			// shuffled[i].cardClick();
+			domTarget.appendChild(shuffled[i].draw());
+			shuffled[i].cardClick();
 
 		}
 	}
