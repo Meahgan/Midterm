@@ -1,7 +1,5 @@
 // Intitial Data for Project -- Card Imagery
 let imgFronts = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'ShamWOW.jpg', 'tommy.jpg', 'wifi.jpg', 'yasss.jpg', 'yearofthedoge.jpg'];
-let cardOneChosen = false;
-let cardOneNumber;
 let click1 = false;
 let clickOneMatch;
 let clickOndId;
@@ -52,7 +50,7 @@ class Card {
 		cardId.addEventListener(`click`, () => {
 			console.log("ya");
 			$(`#${this.cardNumber} .front`).fadeIn(500);
-			// gameBoard.checkMatch(this.matchNumber, this.cardNumber);
+			checkMatch(this.matchNumber, this.cardNumber);
 
 		});
 
@@ -111,22 +109,7 @@ class Board {
 
 		}
 	}
-// 	checkMatch(matchNumber, cardNumber){
-// 			if(click1 === true){
-// 				if(click1 === matchNumber){
-// 					match++;
-// 					click1 = false;
-// 				} else { $(`#${cardNumber}`).hide();
-// 								 $(`#${clickOndId}`).hide();
-// 								 click1 = false;
-// 			  }
-// 			}
-// 			else {
-// 					click1 = true;
-// 					clickOneMatch = matchNumber;
-// 					clickOndId = cardNumber;
-// 				}
-// }
+}
 
 // shuffle() is used to shuffle the card order, borrowed from a stackoverflow thread
 function shuffle(a) {
@@ -139,6 +122,24 @@ function shuffle(a) {
     }
     return a;
 }
+function checkMatch(matchNumber, cardNumber){
+			if(click1 === true){
+				if(clickOneMatch === matchNumber){
+					match++;
+					click1 = false;
+				} 
+				else { 
+					$(`#${cardNumber} .front`).fadeOut(2000);
+					$(`#${clickOndId} .front`).fadeOut(2000);
+					click1 = false;
+			  }
+			}
+			else {
+					click1 = true;
+					clickOneMatch = matchNumber;
+					clickOndId = cardNumber;
+				}
+	}
 // function checkMatch(cardOneChosen, card) {
 //
 // }
