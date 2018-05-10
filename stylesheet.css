@@ -1,21 +1,68 @@
-#start {
-  height: 200px;
-  width: 400px;
-  background-color: rgb(230, 255, 255);
-
+body {
+  background-color: rgba(255, 255, 204, .8);
 }
 
+
+#start {
+  display: flex;
+  height: 200px;
+  width: 250px;
+  font-family: happy brown cat shadow;
+  font-size: 150px;
+  background-color: transparent;
+  color: rgb(0, 64, 128);
+  border: none;
+  justify-content: center;
+  margin: auto;
+  outline: none;
+}
+
+#start:hover{
+  color: rgb(255, 153, 102);
+}
 
 #board {
-  height: 100px;
-  width: 70px;
-  background-color: rgb(0, 64, 128);
-  border-radius: 45px;
-  
-
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin: auto;
+  height: 900px;
+  width: 900px;
+  background-color: rgba(0, 64, 128, .5);
+  border-radius: 30px;
 }
 
+
+.card {
+  width: 20%;
+  height: 20%;
+  margin-left: 35px;
+  margin-top: 40px;
+  border-radius: 25px;
+  background-color: rgb(0, 64, 128);
+  border: 1px solid white;
+
+}
 
 #reset {
-
+  display: flex;
+  height: 200px;
+  width: 250px;
+  font-family: happy brown cat shadow;
+  font-size: 80px;
+  background-color: transparent;
+  color: rgb(0, 64, 128);
+  border: none;
+  justify-content: center;
+  margin: auto;
+  outline: none;
 }
+
+#reset:hover{
+  color: rgb(255, 153, 102);
+}
+
+
+/*----------- MEDIA QUERY ----------*/
+
+@media only screen and(max-width: 768px){}
