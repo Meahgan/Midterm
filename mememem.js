@@ -1,6 +1,6 @@
 // Intitial Data for Project -- Card Imagery
-let imgFronts = new Array(8).fill(0);
-const imgBack = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'pattern.jpg', 'ShamWOW.jpg', 'whynotA.jpg', 'wifi.jpg', 'yass.jpg', 'yearofthedoge.jpg'];
+let imgFronts = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'ShamWOW.jpg', 'whynotA.jpg', 'wifi.jpg', 'yasss.jpg', 'yearofthedoge.jpg'];
+const imgBack = 'pattern.jpg'
 console.log(imgFronts);
 let cardOneChosen = false;
 let cardOneNumber;
@@ -20,11 +20,11 @@ class Card {
 	draw() {
 		// Create Elements needed for a card
 		let card = document.createElement('div');
-		//let cardBack = document.createElement('img');
-		let cardBack = document.createElement('p');
+		let cardBack = document.createElement('img');
+		//let cardBack = document.createElement('p');
 		let cardFront = document.createElement('div');
-		let imgFront = document.createElement('p');
-		//let imgFront = document.createElement('img');
+		//let imgFront = document.createElement('p');
+		let imgFront = document.createElement('img');
 
 		// Set Classes and Img srcs using .setAttribute(attribute, selector)
 		cardBack.setAttribute('class', 'back');
@@ -33,7 +33,7 @@ class Card {
 		card.setAttribute('id', this.cardNumber);
 
 		// Set Content for element by inserting img src using setAttribute
-		//cardBack.setAttribute('src', imgBack);
+		cardBack.setAttribute('src', `imgs/${imgBack}`);
 		imgFront.setAttribute('src', `imgs/${this.cardImg}`);
 		//imgFront.textContent = this.cardNumber;
 
@@ -68,15 +68,17 @@ class Board {
 		// If statement checks to see that the number of cards you want
 		// is not going to exceed the number of unique card matches available in the img data
 		if(this.numberOfCards<=(this.imgFronts.length*2)) {
-			for(let i=0; i<this.numberOfCards; i=i+2){
-				// Sets a pair cards to the same img data...aka a match
-				let matchNumber = i;
-				let card1 = new Card(this.imgFronts[i], i, matchNumber);
-				let card2 = new Card(this.imgFronts[i], i+1, matchNumber);
-				// Adds compiled card html that is ready to be appended to the DOM to
-				// to an array that will be shuffled in setBoard()
-				this.cards.push(card1.draw());
-				this.cards.push(card2.draw());
+			let cardNumber = 0;
+			for(let j=1; j<3; j++){
+				for(let i=0; i<this.imgFronts.length; i++){
+					// Sets a pair cards to the same img data...aka a match
+					let matchNumber = i;
+					let card = new Card(this.imgFronts[i], cardNumber, matchNumber);
+					// Adds compiled card html that is ready to be appended to the DOM to
+					// to an array that will be shuffled in setBoard()
+					this.cards.push(card.draw());
+					cardNumber++;
+				}
 			}
 		}
 		// This else statement is to catch when an error will occur from intial board parameters
@@ -112,7 +114,7 @@ function shuffle(a) {
     return a;
 }
 function checkMatch(cardOneChosen, card) {
-	
+
 }
 ///////////////////////////////////////////
 //////////////////////////////////////////
