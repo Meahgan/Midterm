@@ -1,21 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 
+img {
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  margin-top: 200px;
+}
 
 body {
   background-color: rgba(255, 255, 204, .8);
 }
 
-
 #start {
   display: flex;
   height: 200px;
   width: 250px;
-  font-family: 'happy brown cat shadow';
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Permanent Marker';
   font-size: 150px;
   background-color: transparent;
   color: rgb(0, 64, 128);
   border: none;
   justify-content: center;
-  margin: auto;
+  margin-bottom: 30px;
   outline: none;
 }
 
@@ -46,7 +54,8 @@ body {
   margin-left: 35px;
   margin-top: 40px;
   border-radius: 25px;
-  background-image: url("pattern.jpg");
+  background-image: url("imgs/pattern.jpg");
+  background-position: center;
   border: 1px solid white;
   z-index: 1;
 
@@ -56,7 +65,7 @@ body {
   display: flex;
   height: 200px;
   width: 250px;
-  font-family: happy brown cat shadow;
+  font-family: Permanent Marker;
   font-size: 80px;
   background-color: transparent;
   color: rgb(0, 64, 128);
