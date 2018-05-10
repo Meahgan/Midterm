@@ -20,26 +20,22 @@ class Card {
 	draw() {
 		// Create Elements needed for a card
 		let card = document.createElement('div');
-		let cardBack = document.createElement('img');
 		//let cardBack = document.createElement('p');
 		let cardFront = document.createElement('div');
 		//let imgFront = document.createElement('p');
 		let imgFront = document.createElement('img');
 
 		// Set Classes and Img srcs using .setAttribute(attribute, selector)
-		cardBack.setAttribute('class', 'back');
 		cardFront.setAttribute('class', 'front');
 		card.setAttribute('class', 'card');
 		card.setAttribute('id', this.cardNumber);
 
 		// Set Content for element by inserting img src using setAttribute
-		cardBack.setAttribute('src', `imgs/${imgBack}`);
 		imgFront.setAttribute('src', `imgs/${this.cardImg}`);
 		//imgFront.textContent = this.cardNumber;
 
 		// Build card by appending elements in correct order
 		// Uses append  working top to bottom and from the interior to exterior elements
-		card.appendChild(cardBack);
 		cardFront.appendChild(imgFront);
 		card.appendChild(cardFront);
 		console.log(card);
