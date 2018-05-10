@@ -1,7 +1,5 @@
 // Intitial Data for Project -- Card Imagery
-let imgFronts = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'ShamWOW.jpg', 'whynotA.jpg', 'wifi.jpg', 'yasss.jpg', 'yearofthedoge.jpg'];
-const imgBack = 'pattern.jpg'
-console.log(imgFronts);
+let imgFronts = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'ShamWOW.jpg', 'tommy.jpg', 'wifi.jpg', 'yasss.jpg', 'yearofthedoge.jpg'];
 let cardOneChosen = false;
 let cardOneNumber;
 
@@ -122,3 +120,4 @@ gameBoard.makeCards();
 // Shuffle cards and add them to the DOM
 gameBoard.setBoard();
 
+$(".front").hide();
