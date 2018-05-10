@@ -2,6 +2,10 @@
 let imgFronts = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'ShamWOW.jpg', 'tommy.jpg', 'wifi.jpg', 'yasss.jpg', 'yearofthedoge.jpg'];
 let cardOneChosen = false;
 let cardOneNumber;
+let click1 = false;
+let clickOneMatch;
+let clickOndId;
+let match = 0;
 
 
 // Holds template to build a Card and Card Event Functions
@@ -12,8 +16,8 @@ class Card {
 		this.cardImg = cardImg;
 		this.cardNumber = cardNumber;
 		this.matchNumber = matchNumber;
-
 	}
+
 	// Method assembles html elements so card will appear in DOM
 	draw() {
 		// Create Elements needed for a card
@@ -48,6 +52,7 @@ class Card {
 		cardId.addEventListener(`click`, () => {
 			console.log("ya");
 			$(`#${this.cardNumber} .front`).fadeIn(500);
+			// gameBoard.checkMatch(this.matchNumber, this.cardNumber);
 
 		});
 
@@ -106,7 +111,22 @@ class Board {
 
 		}
 	}
-}
+// 	checkMatch(matchNumber, cardNumber){
+// 			if(click1 === true){
+// 				if(click1 === matchNumber){
+// 					match++;
+// 					click1 = false;
+// 				} else { $(`#${cardNumber}`).hide();
+// 								 $(`#${clickOndId}`).hide();
+// 								 click1 = false;
+// 			  }
+// 			}
+// 			else {
+// 					click1 = true;
+// 					clickOneMatch = matchNumber;
+// 					clickOndId = cardNumber;
+// 				}
+// }
 
 // shuffle() is used to shuffle the card order, borrowed from a stackoverflow thread
 function shuffle(a) {
@@ -119,9 +139,9 @@ function shuffle(a) {
     }
     return a;
 }
-function checkMatch(cardOneChosen, card) {
-
-}
+// function checkMatch(cardOneChosen, card) {
+//
+// }
 
 
 ///////////////////////////////////////////
