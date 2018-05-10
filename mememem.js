@@ -114,10 +114,26 @@ function checkMatch(cardOneChosen, card) {
 //////////////////////////////////////////
 /////////////////////////////////////////
 // Create a new game board
-let gameBoard = new Board(16, imgFronts);
-// Make the cards for the game board
-gameBoard.makeCards();
-// Shuffle cards and add them to the DOM
-gameBoard.setBoard();
+$('#reset').hide();
+$('#board').hide();
+$('#start').on("click", ()=> {
+	$('#start').hide().slideUp();
+	$('#board').show().fadeIn();
+	let gameBoard = new Board(16, imgFronts);
+	// Make the cards for the game board
+	gameBoard.makeCards();
+	$('#reset').toggle();
+	// Shuffle cards and add them to the DOM
+	gameBoard.setBoard();
+	$(".front").hide();
 
-$(".front").hide();
+});
+let reset = document.getElementById('reset');
+reset.addEventListener("click", () => {
+	let board = document.getElementById('board');
+	board.innerHTML = '';
+	$('#start').show();
+	$('#reset').toggle();
+	$('#board').hide();
+});
+
