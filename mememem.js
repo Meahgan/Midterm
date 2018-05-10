@@ -1,16 +1,19 @@
 // Intitial Data for Project -- Card Imagery
 let imgFronts = new Array(8).fill(0);
-const imgBack = 'var';
+const imgBack = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'pattern.jpg', 'ShamWOW.jpg', 'whynotA.jpg', 'wifi.jpg', 'yass.jpg', 'yearofthedoge.jpg'];
 console.log(imgFronts);
+let cardOneChosen = false;
+let cardOneNumber;
 
 
 // Holds template to build a Card and Card Event Functions
 class Card {
 	// Card needs to be passed a number for organizational purposes
 	// and the unique imagery for the front that it and it's match share
-	constructor(cardImg, cardNumber) {
+	constructor(cardImg, cardNumber, matchNumber) {
 		this.cardImg = cardImg;
 		this.cardNumber = cardNumber;
+		this.matchNumber = matchNumber;
 
 	}
 	// Method assembles html elements so card will appear in DOM
@@ -31,8 +34,8 @@ class Card {
 
 		// Set Content for element by inserting img src using setAttribute
 		//cardBack.setAttribute('src', imgBack);
-		//imgFront.setAttribute('src', this.cardImg);
-		imgFront.textContent = this.cardNumber;
+		imgFront.setAttribute('src', `imgs/${this.cardImg}`);
+		//imgFront.textContent = this.cardNumber;
 
 		// Build card by appending elements in correct order
 		// Uses append  working top to bottom and from the interior to exterior elements
@@ -67,8 +70,9 @@ class Board {
 		if(this.numberOfCards<=(this.imgFronts.length*2)) {
 			for(let i=0; i<this.numberOfCards; i=i+2){
 				// Sets a pair cards to the same img data...aka a match
-				let card1 = new Card(this.imgFronts[i], i);
-				let card2 = new Card(this.imgFronts[i], i+1);
+				let matchNumber = i;
+				let card1 = new Card(this.imgFronts[i], i, matchNumber);
+				let card2 = new Card(this.imgFronts[i], i+1, matchNumber);
 				// Adds compiled card html that is ready to be appended to the DOM to
 				// to an array that will be shuffled in setBoard()
 				this.cards.push(card1.draw());
@@ -107,7 +111,12 @@ function shuffle(a) {
     }
     return a;
 }
-
+function checkMatch(cardOneChosen, card) {
+	
+}
+///////////////////////////////////////////
+//////////////////////////////////////////
+/////////////////////////////////////////
 // Create a new game board
 let gameBoard = new Board(16, imgFronts);
 // Make the cards for the game board
