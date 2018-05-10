@@ -1,5 +1,5 @@
 // Intitial Data for Project -- Card Imagery
-let imgFronts = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'ShamWOW.jpg', 'whynotA.jpg', 'wifi.jpg', 'yass.jpg', 'yearofthedoge.jpg'];
+let imgFronts = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'ShamWOW.jpg', 'whynotA.jpg', 'wifi.jpg', 'yasss.jpg', 'yearofthedoge.jpg'];
 const imgBack = 'pattern.jpg'
 console.log(imgFronts);
 let cardOneChosen = false;
@@ -20,11 +20,11 @@ class Card {
 	draw() {
 		// Create Elements needed for a card
 		let card = document.createElement('div');
-		//let cardBack = document.createElement('img');
-		let cardBack = document.createElement('p');
+		let cardBack = document.createElement('img');
+		//let cardBack = document.createElement('p');
 		let cardFront = document.createElement('div');
-		let imgFront = document.createElement('p');
-		//let imgFront = document.createElement('img');
+		//let imgFront = document.createElement('p');
+		let imgFront = document.createElement('img');
 
 		// Set Classes and Img srcs using .setAttribute(attribute, selector)
 		cardBack.setAttribute('class', 'back');
@@ -33,7 +33,7 @@ class Card {
 		card.setAttribute('id', this.cardNumber);
 
 		// Set Content for element by inserting img src using setAttribute
-		cardBack.setAttribute('src', `imgs/imgBack`);
+		cardBack.setAttribute('src', `imgs/${imgBack}`);
 		imgFront.setAttribute('src', `imgs/${this.cardImg}`);
 		//imgFront.textContent = this.cardNumber;
 
