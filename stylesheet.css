@@ -110,7 +110,7 @@ h3 {
 }
 
 
-/* @media only screen and (max-width: 760px) {
+@media only screen and (max-width: 760px) {
   #start {
     display: grid;
     justify-content: center;
@@ -137,7 +137,7 @@ h3 {
     width: 70px;
     border-radius: 20px;
   }
-} */
+}
 
 @media only screen and (max-width: 650px) {
   #start {
@@ -187,10 +187,10 @@ h3 {
   }
 
     h1 {
-      font-size: 24px;
+      font-size: 60%;
     }
 
     h3 {
-      font-size: 20px;
+      font-size: 80%;
     }
 }

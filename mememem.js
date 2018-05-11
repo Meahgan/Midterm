@@ -1,5 +1,4 @@
-// Intitial Data for Project -- Card Imagery
-$('#victory').hide();
+// Initial Data for Project -- Card Imagery
 let imgFronts = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'ShamWOW.jpg', 'tommy.jpg', 'wifi.jpg', 'yasss.jpg', 'yearofthedoge.jpg'];
 let click1 = false;
 let clickOneMatch;
@@ -46,8 +45,8 @@ class Card {
 	cardClick() {
 		let cardId = document.getElementById(`${this.cardNumber}`);
 		cardId.addEventListener(`click`, () => {
-			//if statement ensures that the same card isnt clicked twice
-			//and checked to match itself
+			// if statement ensures that the same card isnt clicked twice
+			// and checked to match itself
 			if(this.cardNumber!==clickOndId) {
 				$(`#${this.cardNumber} .front`).fadeIn(500);
 				checkMatch(this.matchNumber, this.cardNumber);
@@ -56,7 +55,7 @@ class Card {
 	}
 }
 
-//Board to check game
+// Board to check game
 class Board {
 	// Board needs to have how many cards you want and the img data passed to it
 	constructor(numberOfCards, imgFronts) {
@@ -117,7 +116,7 @@ function shuffle(a) {
     return a;
 }
 
-//Checks to see if the last two cards match each other
+// Checks to see if the last two cards match each other
 function checkMatch(matchNumber, cardNumber){
 			// if statement checks to see if first click has happened
 			if(click1 === true){
@@ -128,28 +127,28 @@ function checkMatch(matchNumber, cardNumber){
 					$(`#${clickOndId}`).off("click");
 					let removeCardTwoId = document.getElementById(`${cardNumber}`);
 					let removeCardOneId = document.getElementById(`${clickOndId}`);
-					//Remove ids so cards cannot be matched a second time
+					// Remove ids so cards cannot be matched a second time
 					removeCardOneId.removeAttribute('id');
 					removeCardTwoId.removeAttribute('id');
 					matchFinish(match);
 				}
-				//fades card out when they don't match so they can be reselected
+				// fades card out when they don't match so they can be reselected
 				else {
 					$(`#${cardNumber} .front`).fadeOut(2000);
 					$(`#${clickOndId} .front`).fadeOut(2600);
 					click1 = false;
 				}
 			}
-			//else grabs first click information to be checked on second click
+			// else grabs first click information to be checked on second click
 			// and sets first click to true
 			else {
-					click1 = true;
-					clickOneMatch = matchNumber;
-					clickOndId = cardNumber;
-				}
+				click1 = true;
+				clickOneMatch = matchNumber;
+				clickOndId = cardNumber;
+			}
 	}
 
-// checks to see if all matches have been found and then displays victory screen
+// Checks to see if all matches have been found and then displays victory screen
 function matchFinish (match){
 	if(match === 8){
 		let congrats = document.createElement('div');
@@ -171,12 +170,16 @@ function matchFinish (match){
 ///////////////////////////////////////////
 //////////////////////////////////////////
 /////////////////////////////////////////
-// Create a new game board
+// HIDE THINGS AT THE BEGINNING
 $('#reset').hide();
 $('#board').hide();
+$('#victory').hide();
+
+// START BUTTON EVENT LISTENER
 $('#start').on("click", ()=> {
 	$('#start').slideUp(1000);
 	$('#board').fadeIn(2000);
+	// Create Game Board
 	let gameBoard = new Board(16, imgFronts);
 	// Make the cards for the game board
 	gameBoard.makeCards();
@@ -187,10 +190,11 @@ $('#start').on("click", ()=> {
 	match = 0;
 });
 
-//
+// RESET BUTTON EVENT LISTENER
 let reset = document.getElementById('reset');
 reset.addEventListener("click", () => {
 	let board = document.getElementById('board');
+	// Reset Everything
 	board.innerHTML = '';
 	$('#start').show();
 	$('#reset').toggle();
