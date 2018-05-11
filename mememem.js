@@ -127,8 +127,8 @@ function checkMatch(matchNumber, cardNumber){
 				if(clickOneMatch === matchNumber){
 					match++;
 					click1 = false;
-				} 
-				else { 
+				}
+				else {
 					$(`#${cardNumber} .front`).fadeOut(2000);
 					$(`#${clickOndId} .front`).fadeOut(2000);
 					click1 = false;
