@@ -146,8 +146,19 @@ function checkMatch(matchNumber, cardNumber){
 				}
 	}
 function matchFinish (match){
-	if(match === 1){
-		$("#victory").fadeIn(700)
+	if(match === 8){
+		let congrats = document.createElement('div');
+		congrats.setAttribute('id', 'victory');
+		let victory = document.createElement('h1');
+		victory.textContent = "CONGRATULATIONS!!!";
+		let playAgain = document.createElement('h3');
+		playAgain.textContent = "Click 'reset' below if you'd like to play again";
+		let setup = document.getElementById('board');
+		congrats.appendChild(victory);
+		setup.appendChild(congrats);
+		victory.appendChild(playAgain);
+		$("#victory").hide();
+		$("#victory").fadeIn(1500);
 	}
 }
 // function checkMatch(cardOneChosen, card) {

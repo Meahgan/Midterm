@@ -38,6 +38,7 @@ body {
   flex-wrap: wrap;
   align-content: center;
   margin: auto;
+  justify-content: center;
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 60px;
@@ -88,21 +89,21 @@ body {
   background-color: rgb(0, 64, 128);
   color: rgb(255, 153, 102);
   font-family: Permanent Marker;
-  text-align: center;
-  z-index: 2;
-  padding-left: 60px;
-  padding-right: 60px;
-  margin-top: 16%;
-  margin-left: auto;
+  height: 300px;
+  width: 58%;
   position: absolute;
-  justify-content: center;
-  align-content: center;
+  z-index: 2;
+  margin-top: 50px;
+  padding-top: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
 }
 h1 {
   font-size: 75px;
 }
 h3 {
-  font-size: 45px;
+  font-size: 35px;
 }
 
 
