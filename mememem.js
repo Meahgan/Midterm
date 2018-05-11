@@ -6,7 +6,6 @@ let clickOneMatch;
 let clickOndId;
 let match = 0;
 
-
 // Holds template to build a Card and Card Event Functions
 class Card {
 	// Card needs to be passed a number for organizational purposes
@@ -21,9 +20,7 @@ class Card {
 	draw() {
 		// Create Elements needed for a card
 		let card = document.createElement('div');
-		//let cardBack = document.createElement('p');
 		let cardFront = document.createElement('div');
-		//let imgFront = document.createElement('p');
 		let imgFront = document.createElement('img');
 
 		// Set Classes and Img srcs using .setAttribute(attribute, selector)
@@ -33,7 +30,6 @@ class Card {
 
 		// Set Content for element by inserting img src using setAttribute
 		imgFront.setAttribute('src', `imgs/${this.cardImg}`);
-		//imgFront.textContent = this.cardNumber;
 
 		// Build card by appending elements in correct order
 		// Uses append  working top to bottom and from the interior to exterior elements
@@ -44,19 +40,18 @@ class Card {
 		// because the cards need to be shuffled
 		// return formatted card to the inside of board.makeCards() where it was called
 		return card;
-
 	}
+
 	cardClick() {
 		let cardId = document.getElementById(`${this.cardNumber}`);
 		cardId.addEventListener(`click`, () => {
+			//if statement ensures that the same card isnt clicked twice 
+			//and checked to match itself
 			if(this.cardNumber!==clickOndId) {
 				$(`#${this.cardNumber} .front`).fadeIn(500);
 				checkMatch(this.matchNumber, this.cardNumber);
 			}
-
 		});
-
-
 	}
 }
 
@@ -86,15 +81,14 @@ class Board {
 				// to an array that will be shuffled in setBoard()
 				this.cards.push(card2);
 				cardNumber++;
-
 			}
-
 		}
 		// This else statement is to catch when an error will occur from intial board parameters
 		else {
 			console.log("to run you need to reset number of cards to be less than double of imgs array");
 		}
 	}
+
 	// Takes card elements that were made shuffles them and attaches them to the DOM
 	setBoard(){
 		// shuffle cards and store them in shuffled array
@@ -106,7 +100,6 @@ class Board {
 			let domTarget = document.getElementById('board');
 			domTarget.appendChild(shuffled[i].draw());
 			shuffled[i].cardClick();
-
 		}
 	}
 }
@@ -122,7 +115,10 @@ function shuffle(a) {
     }
     return a;
 }
+
+//Checks to see if the last two cards match each other
 function checkMatch(matchNumber, cardNumber){
+			// if statement checks to see if first click has happened
 			if(click1 === true){
 				if(clickOneMatch === matchNumber){
 					match++;
@@ -131,16 +127,20 @@ function checkMatch(matchNumber, cardNumber){
 					$(`#${clickOndId}`).off("click");
 					let removeCardTwoId = document.getElementById(`${cardNumber}`);
 					let removeCardOneId = document.getElementById(`${clickOndId}`);
+					//Remove ids so cards cannot be matched a second time
 					removeCardOneId.removeAttribute('id');
 					removeCardTwoId.removeAttribute('id');
 					matchFinish(match);
 				}
+				//fades card out when they don't match so they can be reselected
 				else {
 					$(`#${cardNumber} .front`).fadeOut(2000);
 					$(`#${clickOndId} .front`).fadeOut(2600);
 					click1 = false;
-			  }
+				}
 			}
+			//else grabs first click information to be checked on second click
+			// and sets first click to true
 			else {
 					click1 = true;
 					clickOneMatch = matchNumber;
@@ -148,6 +148,7 @@ function checkMatch(matchNumber, cardNumber){
 				}
 	}
 
+// checks to see if all matches have been found and then displays victory screen
 function matchFinish (match){
 	if(match === 8){
 		let congrats = document.createElement('div');
@@ -182,8 +183,9 @@ $('#start').on("click", ()=> {
 	gameBoard.setBoard();
 	$(".front").hide();
 	match = 0;
-
 });
+
+// 
 let reset = document.getElementById('reset');
 reset.addEventListener("click", () => {
 	let board = document.getElementById('board');
