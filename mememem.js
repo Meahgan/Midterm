@@ -5,6 +5,7 @@ let click1 = false;
 let clickOneMatch;
 let clickOndId;
 let match = 0;
+let music = document.getElementById("myAudio");
 
 // Holds template to build a Card and Card Event Functions
 class Card {
@@ -161,7 +162,6 @@ function matchFinish (match){
 		congrats.appendChild(victory);
 		setup.appendChild(congrats);
 		victory.appendChild(playAgain);
-		let music = document.getElementById("myAudio");
 		$("#victory").hide();
 		$("#victory").fadeIn(1500);
 		music.play();
@@ -197,5 +197,6 @@ reset.addEventListener("click", () => {
 	$('#board').hide();
 	$("#victory").hide();
 	match = 0;
+	
 	music.pause();
 });
