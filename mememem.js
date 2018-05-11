@@ -49,8 +49,10 @@ class Card {
 		let cardId = document.getElementById(`${this.cardNumber}`);
 		cardId.addEventListener(`click`, () => {
 			console.log("ya");
-			$(`#${this.cardNumber} .front`).fadeIn(500);
-			checkMatch(this.matchNumber, this.cardNumber);
+			if(this.cardNumber!==clickOndId) {
+				$(`#${this.cardNumber} .front`).fadeIn(500);
+				checkMatch(this.matchNumber, this.cardNumber);
+			}
 
 		});
 
