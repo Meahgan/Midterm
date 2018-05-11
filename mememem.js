@@ -129,7 +129,10 @@ function checkMatch(matchNumber, cardNumber){
 					click1 = false;
 					$(`#${cardNumber}`).off("click");
 					$(`#${clickOndId}`).off("click");
-					console.log(match);
+					let removeCardTwoId = document.getElementById(`${cardNumber}`);
+					let removeCardOneId = document.getElementById(`${clickOndId}`);
+					removeCardOneId.removeAttribute('id');
+					removeCardTwoId.removeAttribute('id');
 					matchFinish(match);
 				}
 				else {
@@ -146,7 +149,7 @@ function checkMatch(matchNumber, cardNumber){
 	}
 
 function matchFinish (match){
-	if(match === 1){
+	if(match === 8){
 		$("#victory").fadeIn(700)
 	}
 }
