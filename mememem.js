@@ -1,4 +1,5 @@
 // Intitial Data for Project -- Card Imagery
+$('#victory').hide();
 let imgFronts = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'ShamWOW.jpg', 'tommy.jpg', 'wifi.jpg', 'yasss.jpg', 'yearofthedoge.jpg'];
 let click1 = false;
 let clickOneMatch;
@@ -128,10 +129,12 @@ function checkMatch(matchNumber, cardNumber){
 					click1 = false;
 					$(`#${cardNumber}`).off("click");
 					$(`#${clickOndId}`).off("click");
+					console.log(match);
+					matchFinish(match);
 				}
 				else {
 					$(`#${cardNumber} .front`).fadeOut(2000);
-					$(`#${clickOndId} .front`).fadeOut(2000);
+					$(`#${clickOndId} .front`).fadeOut(2600);
 					click1 = false;
 			  }
 			}
@@ -141,6 +144,12 @@ function checkMatch(matchNumber, cardNumber){
 					clickOndId = cardNumber;
 				}
 	}
+
+function matchFinish (match){
+	if(match === 1){
+		$("#victory").fadeIn(700)
+	}
+}
 
 ///////////////////////////////////////////
 //////////////////////////////////////////
@@ -158,6 +167,7 @@ $('#start').on("click", ()=> {
 	// Shuffle cards and add them to the DOM
 	gameBoard.setBoard();
 	$(".front").hide();
+	match = 0;
 
 });
 let reset = document.getElementById('reset');
@@ -167,5 +177,6 @@ reset.addEventListener("click", () => {
 	$('#start').show();
 	$('#reset').toggle();
 	$('#board').hide();
+	$("#victory").hide();
+	match = 0;
 });
-$('#victory').hide();
