@@ -1,7 +1,10 @@
 // Intitial Data for Project -- Card Imagery
+$('#victory').hide();
 let imgFronts = ['dogezilla.jpg', 'frisbeedoge.jpg', 'ifElse.jpg', 'ShamWOW.jpg', 'tommy.jpg', 'wifi.jpg', 'yasss.jpg', 'yearofthedoge.jpg'];
-let cardOneChosen = false;
-let cardOneNumber;
+let click1 = false;
+let clickOneMatch;
+let clickOndId;
+let match = 0;
 
 
 // Holds template to build a Card and Card Event Functions
@@ -12,8 +15,8 @@ class Card {
 		this.cardImg = cardImg;
 		this.cardNumber = cardNumber;
 		this.matchNumber = matchNumber;
-
 	}
+
 	// Method assembles html elements so card will appear in DOM
 	draw() {
 		// Create Elements needed for a card
@@ -48,6 +51,7 @@ class Card {
 		cardId.addEventListener(`click`, () => {
 			console.log("ya");
 			$(`#${this.cardNumber} .front`).fadeIn(500);
+			checkMatch(this.matchNumber, this.cardNumber);
 
 		});
 
@@ -119,9 +123,34 @@ function shuffle(a) {
     }
     return a;
 }
-function checkMatch(cardOneChosen, card) {
-
+function checkMatch(matchNumber, cardNumber){
+			if(click1 === true){
+				if(clickOneMatch === matchNumber){
+					match++;
+					click1 = false;
+					console.log(match);
+					matchFinish(match);
+				}
+				else {
+					$(`#${cardNumber} .front`).fadeOut(2000);
+					$(`#${clickOndId} .front`).fadeOut(2600);
+					click1 = false;
+			  }
+			}
+			else {
+					click1 = true;
+					clickOneMatch = matchNumber;
+					clickOndId = cardNumber;
+				}
+	}
+function matchFinish (match){
+	if(match === 1){
+		$("#victory").fadeIn(700)
+	}
 }
+// function checkMatch(cardOneChosen, card) {
+//
+// }
 
 
 ///////////////////////////////////////////
@@ -140,6 +169,7 @@ $('#start').on("click", ()=> {
 	// Shuffle cards and add them to the DOM
 	gameBoard.setBoard();
 	$(".front").hide();
+	match = 0;
 
 });
 let reset = document.getElementById('reset');
@@ -149,5 +179,6 @@ reset.addEventListener("click", () => {
 	$('#start').show();
 	$('#reset').toggle();
 	$('#board').hide();
+	$("#victory").hide();
+	match = 0;
 });
-$('#victory').hide();
