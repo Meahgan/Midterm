@@ -151,7 +151,7 @@ function checkMatch(matchNumber, cardNumber){
 
 // checks to see if all matches have been found and then displays victory screen
 function matchFinish (match){
-	if(match === 1){
+	if(match === 8){
 		let congrats = document.createElement('div');
 		congrats.setAttribute('id', 'victory');
 		let victory = document.createElement('h1');
