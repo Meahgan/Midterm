@@ -37,6 +37,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
+  margin: auto;
   padding-left: 50px;
   padding-right: 50px;
   padding-bottom: 60px;
@@ -81,8 +82,6 @@ body {
 }
 
 #victory {
-  position: absolute;
-  align-self: flex-start;
   border-radius: 25px;
   border: 2px solid black;
   background-color: rgb(255, 153, 102);
@@ -90,11 +89,16 @@ body {
   font-family: Permanent Marker;
   letter-spacing: 1px;
   height: 300px;
+  width: 900px;
+  position: absolute;
   z-index: 2;
+  margin-top: 50px;
   padding-top: 25px;
   padding-left: 20px;
   padding-right: 20px;
   text-align: center;
+  margin-left: auto;
+  margin-right: 60%;
 }
 
 h1 {
@@ -104,15 +108,6 @@ h1 {
 h3 {
   font-size: 35px;
 }
-#bigContain {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-
-/*----------- MEDIA QUERY ----------*/
 
 
 @media only screen and (max-width: 760px) {
@@ -131,10 +126,10 @@ h3 {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    width: 50%;
-    height: 50%;
+    width: 450px;
+    height: 450px;
     padding-bottom: 60px;
-    margin: 50px;
+    margin: auto;
   }
 
   .card {
@@ -170,4 +165,32 @@ h3 {
     width: 50px;
     border-radius: 10px;
   }
+
+  #victory {
+    border-radius: 25px;
+    border: 2px solid black;
+    background-color: rgb(255, 153, 102);
+    color: rgb(0, 64, 128);
+    font-family: Permanent Marker;
+    letter-spacing: 1px;
+    height: 30%;
+    width: 50%;
+    position: absolute;
+    z-index: 2;
+    margin-top: 50px;
+    padding-top: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: 60%;
+  }
+
+    h1 {
+      font-size: 60%;
+    }
+
+    h3 {
+      font-size: 80%;
+    }
 }

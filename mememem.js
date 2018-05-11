@@ -46,7 +46,7 @@ class Card {
 	cardClick() {
 		let cardId = document.getElementById(`${this.cardNumber}`);
 		cardId.addEventListener(`click`, () => {
-			//if statement ensures that the same card isnt clicked twice 
+			//if statement ensures that the same card isnt clicked twice
 			//and checked to match itself
 			if(this.cardNumber!==clickOndId) {
 				$(`#${this.cardNumber} .front`).fadeIn(500);
@@ -187,7 +187,7 @@ $('#start').on("click", ()=> {
 	match = 0;
 });
 
-// 
+//
 let reset = document.getElementById('reset');
 reset.addEventListener("click", () => {
 	let board = document.getElementById('board');
@@ -197,6 +197,6 @@ reset.addEventListener("click", () => {
 	$('#board').hide();
 	$("#victory").hide();
 	match = 0;
-	
+
 	music.pause();
 });
