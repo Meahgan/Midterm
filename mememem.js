@@ -48,7 +48,6 @@ class Card {
 	cardClick() {
 		let cardId = document.getElementById(`${this.cardNumber}`);
 		cardId.addEventListener(`click`, () => {
-			console.log("ya");
 			if(this.cardNumber!==clickOndId) {
 				$(`#${this.cardNumber} .front`).fadeIn(500);
 				checkMatch(this.matchNumber, this.cardNumber);
@@ -97,10 +96,8 @@ class Board {
 	}
 	// Takes card elements that were made shuffles them and attaches them to the DOM
 	setBoard(){
-		console.log(this.cards);
 		// shuffle cards and store them in shuffled array
 		let shuffled = shuffle(this.cards);
-		console.log(shuffled);
 
 		// Iterate through shuffled array and add each card to the DOM targeting
 		// #board id
@@ -129,6 +126,8 @@ function checkMatch(matchNumber, cardNumber){
 				if(clickOneMatch === matchNumber){
 					match++;
 					click1 = false;
+					$(`#${cardNumber}`).off("click");
+					$(`#${clickOndId}`).off("click");
 				}
 				else {
 					$(`#${cardNumber} .front`).fadeOut(2000);
@@ -142,10 +141,6 @@ function checkMatch(matchNumber, cardNumber){
 					clickOndId = cardNumber;
 				}
 	}
-// function checkMatch(cardOneChosen, card) {
-//
-// }
-
 
 ///////////////////////////////////////////
 //////////////////////////////////////////
